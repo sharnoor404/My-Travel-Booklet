@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         var landmarkNames=ArrayList<String>()
 
         landmarkNames.add("Venice")
@@ -26,14 +27,14 @@ class MainActivity : AppCompatActivity() {
         val venice=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.venice)
         val atacama=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.atacama)
         val whitsunday=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.whitsunday)
-        val apostles=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.apostles)
+        val apostles=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.apostles2)
 
 
         val landmarkImages=ArrayList<Bitmap>()
 
         landmarkImages.add(venice)
         landmarkImages.add(atacama)
-        landmarkImages.add(whitsunday)
+       landmarkImages.add(whitsunday)
         landmarkImages.add(apostles)
 
 
@@ -44,6 +45,12 @@ class MainActivity : AppCompatActivity() {
 
             val intent= Intent(applicationContext,DetailActivity::class.java)
             intent.putExtra("name",landmarkNames[position])
+
+            val bitmap=landmarkImages[position]
+
+            val chosen=Globals.Chosen
+            chosen.chosenImage=bitmap
+
             startActivity(intent)
         }
     }
